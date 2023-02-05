@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Choose your adventure!</title>
+        <style>
+            :root {
+                --vortex1: rgba(24, 28, 44);
+                --vortex2: rgb(22, 24, 40);
+            }
+            * {
+                box-sizing: border-box;
+                margin: 0px;
+                padding: 0px;
+            }
+            html, body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+            }
+            @keyframes vortex {
+                from {
+                    background-size: 100%;
+                    animation-timing-function: ease-in;
+                }
+                50% {
+                    background-size: 500%;
+                    animation-timing-function: ease-in;
+                }
+                to {
+                    background-size: 100%;
+                    animation-timing-function: ease-in;
+                }   
+            }
+            body {
+                background: radial-gradient(
+                    circle,
+                    var(--vortex1) 0%,
+                    var(--vortex1) 1%,
+                    var(--vortex2) 1%,
+                    var(--vortex2) 2%,
+                    var(--vortex1) 2%,
+                    var(--vortex1) 3%,
+                    var(--vortex2) 3%,
+                    var(--vortex2) 4%,
+                    var(--vortex1) 4%,
+                    var(--vortex1) 5%,
+                    var(--vortex2) 5%,
+                    var(--vortex2) 6%,
+                    var(--vortex1) 6%,
+                    var(--vortex1) 7%,
+                    var(--vortex2) 7%,
+                    var(--vortex2) 8%,
+                    var(--vortex1) 8%,
+                    var(--vortex1) 12%,
+                    var(--vortex2) 12%,
+                    var(--vortex2) 19%,
+                    var(--vortex1) 19%,
+                    var(--vortex1) 29%,
+                    var(--vortex2) 29%,
+                    var(--vortex2) 39%,
+                    var(--vortex1) 39%,
+                    var(--vortex1) 49%,
+                    var(--vortex2) 49%,
+                    var(--vortex2) 59%,
+                    var(--vortex1) 59%,
+                    var(--vortex1) 69%,
+                    var(--vortex2) 69%,
+                    var(--vortex2) 79%,
+                    var(--vortex1) 79%,
+                    var(--vortex1) 89%,
+                    var(--vortex2) 89%,
+                    var(--vortex2) 100%);
+                position: relative;
+                overflow: hidden;
+                background-position: center;
+                animation: vortex 100ms infinite;
+            }
+            @keyframes tardis-move {
+                from {
+                    transform: rotate(-5deg) scale(1);
+                    animation-timing-function: ease-in-out;
+                }
+                25% {
+                    transform: rotate(5deg) scale(1.05) translateY(20px) translateX(-30px);
+                    animation-timing-function: ease-in-out;
+                }
+                50% {
+                    transform: rotate(-5deg) scale(0.95) translateY(-20px) translateX(10px);
+                    animation-timing-function: ease-in-out;
+                }
+                75% {
+                    transform: rotate(5deg) scale(1.02) translateY(0px) translateX(-30px);
+                    animation-timing-function: ease-in-out;
+                }
+                to {
+                    transform: rotate(-5deg) scale(1) translateY(0px) translateX(0px);
+                    animation-timing-function: ease-in-out;
+                }
+            }
+            @keyframes light {
+                from {
+                    box-shadow: 0px 0px 10px 10px rgb(240, 255, 186, 0);
+                    animation-timing-function: ease-in-out;
+                }
+                50% {
+                    box-shadow: 0px 0px 10px 10px rgb(240, 255, 186, 1);
+                    animation-timing-function: ease-in-out;
+                }
+                to {
+                    box-shadow: 0px 0px 10px 10px rgb(240, 255, 186, 0);
+                    animation-timing-function: ease-in-out;
+                }              
+            }
+            #t40-container {
+                padding: 20px;
+                margin: auto;
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: center;
+                width: 50%;
+                height: 100%;
+                animation-name: tardis-move;
+                animation-duration: 2000ms;
+                animation-iteration-count: infinite;
+                animation-fill-mode: backwards;
+                transform-origin: top center;
+            }
+            [class^='tardis-']{
+                border: 1px solid black;
+            }
+            .tardis-base {
+                background-color: #003b6f;
+                width: 130px;
+                height: 274px;
+                display: flex;
+                flex-flow: row;
+                border-bottom: none;
+            }
+            .tardis-footer {
+                background-color: #01335f;
+                width: 188px;
+                height: 15px;
+            }
+            .tardis-leaf {
+                border-left: none;
+                border-top: none;
+                border-bottom: none;
+                width: 50%;
+            }
+            .tardis-leaf:nth-of-type(2){
+                border-right: none;
+            }
+            .tardis-window {
+                margin: auto;
+                background-color: white;
+                height: 55px;
+                width: 45px;
+                margin-top: 9px;
+                display: flex;
+                flex-flow: row;
+                flex-wrap: wrap;
+                column-gap: 2px;
+                padding: 1px;
+                padding-top: 2px;
+            }
+            .tardis-window-part {
+                background-color: #6e6b61;
+                width: 12px;
+                height: 24px;
+            }
+            .tardis-leaf-cell {
+                margin: auto;
+                margin-top: 9px;
+                height: 55px;
+                width: 45px; 
+                border-top: 2px solid black;
+                border-right: 2px solid black;
+                position: relative;
+            }
+            .tardis-leaf-cell-cross {
+                width: 100%;
+                height: 100%;
+                border: none;
+                position: relative;
+            }
+            .tardis-leaf-cell-cross::before, .tardis-leaf-cell-cross::after {
+                content:'';
+                position: absolute;
+                border-left: 1px solid black;
+                height: 69px;
+                left: 21px;
+                top: -9px;
+            }
+            .tardis-leaf-cell-cross::before {
+                transform: rotate(39deg);
+            }
+            .tardis-leaf-cell-cross::after {
+                transform: rotate(-39deg);
+            }
+            .tardis-leaf-cell-sign {
+                background-color: white;
+                width: 35px;
+                height: 45px;
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                text-align: center;
+                padding-top: 2px;
+            }
+            .tardis-leaf-cell-sign h1 {
+                font-size: 4pt;
+                font-weight: lighter;
+            }
+            .tardis-leaf-cell-sign h2 {
+                font-size: 3pt;
+                font-weight: lighter;
+            }
+            .tardis-leaf-cell-sign h3 {
+                font-size: 2.112pt;
+                font-weight: lighter;
+            }
+            .tardis-leaf-cell-sign h4 {
+                font-size: 1.75pt;
+                font-weight: lighter;
+            }
+            .tardis-leaf-cell-sign h5 {
+                font-size: 1.5pt;
+                font-weight: lighter;
+            }
+            .tardis {
+                display: flex;
+                flex-flow: row;
+                align-items: flex-end;
+            }
+            .tardis-column {
+                height: 302px;
+                width: 20px;
+                border-bottom: none;
+                background-color: #003b6f;
+            }
+            .tardis-bar {
+                height: 26px;
+                width: 160px;
+                background-color: #003b6f;
+                margin-bottom: -29px;
+                z-index: 100;
+                display: flex;
+                flex-flow: row;
+                justify-content: center;
+                align-items: center;
+            }
+            .tardis-bar-sign {
+                height: 20px;
+                width: 126px;
+                background-color: #2c3550;
+                margin: auto;
+                display: flex;
+                flex-flow: row;
+                justify-content: space-between;
+                align-items: center;
+                color: white;
+                font-family: sans-serif;
+                padding-left: 2px;
+                padding-right: 2px;
+                font-size: 10pt;
+            }
+            .tardis-small-bar {
+                margin-top: 3px;
+                height: 26px;
+                width: 5px;
+                background-color: #003b6f;
+                align-self: flex-start;
+            }
+            .tardis-top {
+                height: 20px;
+                width: 160px;
+                background-color: #003b6f;
+                position: relative;
+                z-index: -100;
+                border-bottom: none;
+            }
+            .tardis-top::before, .tardis-top::after{
+                content: '';
+                position: absolute;
+                height: 100%;
+                border-left: 1px solid black;
+            }
+            .tardis-top::before {
+                left: 14px;
+            }
+            .tardis-top::after {
+                right: 14px;
+            }
+            .tardis-light-base {
+                height: 10px;
+                width: 144px;
+                background-color: #003b6f;  
+                border-bottom: none;          
+            }
+            .tardis-light-triangle {
+                width: 144px;
+                height: 20px;
+                border-top: none;
+                border-left: 60px solid transparent;
+                border-right: 60px solid transparent;
+                border-bottom: 5px solid #003b6f;
+                z-index: -100;
+            }
+            .tardis-light-top-base {
+                height: 5px;
+                width: 26px;
+                background-color: #003b6f;     
+                z-index: 200;     
+                margin-bottom: -15px;
+            }
+            .tardis-light {
+                height: 20px;
+                width: 20px;
+                background-color: #d9d9d7;   
+                border-bottom: none;
+                z-index: -100;
+                box-shadow: 0px 0px 10px 10px rgb(240, 255, 186, 1);
+                animation: light 500ms infinite;
+                position: relative;
+            }
+            .tardis-light:before, .tardis-light:after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                border-top: 1px solid black;
+            }
+            .tardis-light:before {
+                top: 5px;
+            }
+            .tardis-light:after {
+                bottom: 5px;
+            }
+            .tardis-light-peak {
+                width: 21px;
+                height: 25px;
+                border-top: none;
+                border-left: 15px solid transparent;
+                border-right: 15px solid transparent;
+                border-bottom: 6px solid #003b6f;
+            }
+            @keyframes circle-one {
+                from {
+                    width: 100px;
+                    height: 100px;
+                    left: 0;
+                    animation-timing-function: linear;
+                }
+                to {
+                    left: -40vmax;
+                    width: 400vmin;
+                    height: 400vmax;
+                    animation-timing-function: linear;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div style="position: absolute; top: 50px; font-family: sans-serif; color: white; font-weight: bolder; text-align: center; margin: auto; left: 0; right: 0;">
+            <h1>ОШИБКА 404</h1>
+            <h1>СТРАНИЦА ПРОВАЛИЛАСЬ В ТЕМПОРАЛЬНУЮ ТРЕЩИНУ</h1>
+        </div>
+        <div style="position: absolute; bottom: 50px; font-family: sans-serif; color: white; font-weight: bolder; text-align: center; margin: auto; left: 0; right: 0;">
+            <h1>ТАРДИС С ДОКТОРОМ ОТПРАВИЛИСЬ ЕЕ ЗАДЕЛАТЬ</h1>
+        </div>
+        <div id="t40-container">
+            <div class="tardis-light-peak"></div>
+            <div class="tardis-light"></div>
+            <div class="tardis-light-top-base"></div>
+            <div class="tardis-light-triangle"></div>
+            <div class="tardis-light-base"></div>
+            <div class="tardis-top"></div>
+            <div class="tardis-bar">
+                <div class="tardis-bar-sign">
+                    <p>POLICE</p> 
+                    <p style="text-align: center; font-size: 5.5pt;">
+                        PUBLIC<br>
+                        CALL
+                    </p>
+                    <p>BOX</p>
+                </div>
+            </div>
+            <div class="tardis">
+                <div class="tardis-small-bar"></div>
+                <div class="tardis-column"></div>
+                <div class="tardis-base">
+                    <div class="tardis-leaf">
+                        <div class="tardis-window">
+                            <div class="tardis-window-part"></div>
+                            <div class="tardis-window-part"></div>
+                            <div class="tardis-window-part"></div>
+                            <div class="tardis-window-part"></div>
+                            <div class="tardis-window-part"></div>
+                            <div class="tardis-window-part"></div>
+                        </div>
+                        <div class="tardis-leaf-cell">
+                            <div class="tardis-leaf-cell-cross"></div>
+                            <div class="tardis-leaf-cell-sign">
+                                <h3 style="margin-bottom: 2px;">POLICE TELEPHONE</h3>
+                                <h1>FREE</h1>
+                                <h3>FOR USE OF</h3>
+                                <h1 style="margin-bottom: 2px;">PUBLIC</h1>
+                                <h4 style="font-family: sans-serif;">ADVICE & ASSISTANCE</h4>
+                                <h4 style="font-family: sans-serif; margin-bottom: 1px;">OBTAINABVLE IMMEDIATELY</h4>
+                                <h5 style="font-family: sans-serif;">OFFICER & CARS</h5>
+                                <h5 style="font-family: sans-serif; margin-bottom: 1.5px;">RESPOND TO ALL CALLS</h5>
+                                <h2 style="font-family: sans-serif;">PULL TO OPEN</h5>
+                            </div>
+                        </div>
+                        <div class="tardis-leaf-cell"></div>
+                        <div class="tardis-leaf-cell"></div>
+                    </div>
+                    <div class="tardis-leaf">
+                        <div class="tardis-window">
+                            <div class="tardis-window-part"></div>
+                            <div class="tardis-window-part"></div>
+                            <div class="tardis-window-part"></div>
+                            <div class="tardis-window-part"></div>
+                            <div class="tardis-window-part"></div>
+                            <div class="tardis-window-part"></div>
+                        </div>
+                        <div class="tardis-leaf-cell"></div>
+                        <div class="tardis-leaf-cell"></div>
+                        <div class="tardis-leaf-cell"></div>
+                    </div>
+                </div>
+                <div class="tardis-column"></div>
+                <div class="tardis-small-bar"></div>
+            </div>
+            <div class="tardis-footer"></div>
+        </div>
+    </body>
+</html>
