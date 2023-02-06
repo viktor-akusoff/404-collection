@@ -1,6 +1,6 @@
-# 404 COLLECTION
+# КОЛЛЕКЦИЯ СТРАНИЦ 404
 
-Here's collection of 404 pages created by me.
-You're free to use them in your projects!
-There's no need to install any additional dependencies.
-Every html file contains already fully functional 404 page.
+Это сборник страниц 404, созданных мной.
+Никаких дополнительных фреймворков и библиотек не требуется.
+Написано на чистом CSS и функционирует "из коробки".
+Вы вольны использовать их в своих проектах как угодно!
