@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка 404</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        @keyframes sky-rotation {
+            from {
+                background-color: orange;
+                transform: rotate(-90deg);
+                animation-timing-function: linear;
+            }
+            10% {
+                background-color: orange;
+                animation-timing-function: linear;
+            }
+            15% {
+                background-color: skyblue;
+                animation-timing-function: linear;
+            }
+            35% {
+                background-color: skyblue;
+                animation-timing-function: linear;
+            }
+            50% {
+                background-color: orange;
+                animation-timing-function: linear;
+            }
+            55% {
+                background-color: black;
+                animation-timing-function: linear;
+            }
+            95% {
+                background-color: black;
+                animation-timing-function: linear;
+            }
+            to {
+                background-color: orange;
+                transform: rotate(270deg);
+                animation-timing-function: linear;
+            }
+        }
+        .sky-container {
+            background-color: skyblue;
+            width: 70vmin;
+            height: 70vmin;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 35vmin;
+            gap: 20vmin;
+            animation: sky-rotation 10000ms infinite;
+        }
+        .sun {
+            background: radial-gradient(circle, white 0%, white 50%, rgb(255, 255, 67) 100%);
+            border-radius: 2vmin;
+            box-sizing: 0;
+            width: 4vmin;
+            height: 4vmin;
+            box-shadow: 0 0 2vmin 2vmin rgb(255, 255, 173);
+            margin: auto;
+        }
+        @keyframes moon-phases {
+            from {
+                box-shadow: inset 0px 0px 0px 0px rgb(41, 51, 58);
+                animation-timing-function: linear;
+            }
+            12% {
+                background-color: rgb(229, 249, 255);
+                box-shadow: inset 1.6vmin 0px 0px -0.8vmin rgb(41, 51, 58);
+                animation-timing-function: linear;
+            }
+            25% {
+                background-color: rgb(229, 249, 255);
+                box-shadow: inset 8vmin 0px 0px -6vmin rgb(41, 51, 58);
+                animation-timing-function: steps(1, jump-start);
+            }
+            25% {
+                background-color: rgb(41, 51, 58);
+                box-shadow: inset -8vmin 0px 0px -6vmin rgb(229, 249, 255);
+                animation-timing-function: linear
+            }
+            37% {
+                background-color: rgb(41, 51, 58);
+                box-shadow: inset -1.6vmin 0px 0px -0.8vmin rgb(229, 249, 255);
+                animation-timing-function: linear
+            }
+            50% {
+                background-color: rgb(41, 51, 58);
+                box-shadow: inset 0px 0px 0px 0px rgb(229, 249, 255);
+                animation-timing-function: linear;
+            }
+            62% {
+                background-color: rgb(41, 51, 58);
+                box-shadow: inset 1.6vmin 0px 0px -0.8vmin rgb(229, 249, 255);
+                animation-timing-function: linear;
+            }
+            75% {
+                background-color: rgb(41, 51, 58);
+                box-shadow: inset 8vmin 0px 0px -6vmin rgb(229, 249, 255);
+                animation-timing-function: steps(1, jump-start);
+            }
+            75% {
+                background-color: rgb(229, 249, 255);
+                box-shadow: inset -8vmin 0px 0px -6vmin rgb(41, 51, 58);
+                animation-timing-function: linear;
+            }
+            87% {
+                background-color: rgb(229, 249, 255);
+                box-shadow: inset -1.6vmin 0px 0px -0.8vmin rgb(41, 51, 58);
+                animation-timing-fuction: linear;
+            }
+            to {
+                background-color: rgb(229, 249, 255);
+                box-shadow: inset 0px 0px 0px 0px rgb(41, 51, 58);
+                animation-timing-function: linear;
+            }
+        }
+        .moon {
+            background: rgb(229, 249, 255);
+            border-radius: 4vmin;
+            box-sizing: 0;
+            width: 4vmin;
+            height: 4vmin;
+            box-shadow: inset 200px 0px 0px -150px rgb(41, 51, 58);
+            margin: auto;
+            animation: moon-phases 280000ms infinite;
+        }
+        @keyframes world {
+            from {
+                filter: hue-rotate(-30deg);  
+            }
+            10% {
+                filter: hue-rotate(-30deg);  
+            }
+            15% {
+                filter: hue-rotate(0deg);
+            }
+            35% {
+                filter: hue-rotate(0deg);
+            }
+            50% {
+                filter: hue-rotate(-30deg);  
+            }
+            55% {
+                filter: hue-rotate(110deg);
+            }
+            95% {
+                filter: hue-rotate(110deg);  
+            }
+            to {
+                filter: hue-rotate(-30deg);  
+            }
+        }
+        .world-container {
+            background: linear-gradient(transparent 0%, transparent 50%, rgb(42, 102, 151) 50%, rgb(42, 102, 151) 65%, rgb(255, 239, 151) 65%);
+            width: 70vmin;
+            height: 70vmin;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 35vmin;
+            z-index: 100;    
+            animation: world 10000ms infinite;       
+        }
+    </style>
+</head>
+<body>
+    <div class="sky-container">
+        <div class="sun"></div>
+        <div class="moon"></div>
+    </div>
+    <div class="world-container" style="font-size:1.5vmin;">
+        <h1 style="font-family:sans-serif; font-weight:bolder; padding-top: 47vmin; text-align: center;">ОШИБКА 404</h1>
+        <h1 style="font-family:sans-serif; font-weight:bolder; padding-top: 5vmin; text-align: center;">ПЕРЕЗАПУСКАЕМ ВСЕЛЕННУЮ,</h1>
+        <h1 style="font-family:sans-serif; font-weight:bolder; text-align: center;">ЧТОБЫ РЕШИТЬ ПРОБЛЕМУ</h1>
+    </div>
+    
+</body>
+</html>
