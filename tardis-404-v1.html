@@ -7,8 +7,13 @@
         <title>Choose your adventure!</title>
         <style>
             :root {
-                --vortex1: rgba(24, 28, 44);
-                --vortex2: rgb(22, 24, 40);
+                --vortex1: rgb(47, 47, 73);
+                --vortex2: rgb(52, 52, 78);
+            }
+            @property --move-rate{
+                syntax: '<percentage>';
+                inherits: false;
+                initial-value: 0%;
             }
             * {
                 box-sizing: border-box;
@@ -23,61 +28,62 @@
             }
             @keyframes vortex {
                 from {
-                    background-size: 100%;
-                    animation-timing-function: ease-in;
-                }
-                50% {
-                    background-size: 500%;
-                    animation-timing-function: ease-in;
+                    --move-rate: 0%;
+                    animation-timing-function: linear;
                 }
                 to {
-                    background-size: 100%;
-                    animation-timing-function: ease-in;
+                    --move-rate: 100%;
+                    animation-timing-function: linear;
                 }   
             }
             body {
                 background: radial-gradient(
                     circle,
-                    var(--vortex1) 0%,
-                    var(--vortex1) 1%,
-                    var(--vortex2) 1%,
-                    var(--vortex2) 2%,
-                    var(--vortex1) 2%,
-                    var(--vortex1) 3%,
-                    var(--vortex2) 3%,
-                    var(--vortex2) 4%,
-                    var(--vortex1) 4%,
-                    var(--vortex1) 5%,
-                    var(--vortex2) 5%,
-                    var(--vortex2) 6%,
-                    var(--vortex1) 6%,
-                    var(--vortex1) 7%,
-                    var(--vortex2) 7%,
-                    var(--vortex2) 8%,
-                    var(--vortex1) 8%,
-                    var(--vortex1) 12%,
-                    var(--vortex2) 12%,
-                    var(--vortex2) 19%,
-                    var(--vortex1) 19%,
-                    var(--vortex1) 29%,
-                    var(--vortex2) 29%,
-                    var(--vortex2) 39%,
-                    var(--vortex1) 39%,
-                    var(--vortex1) 49%,
-                    var(--vortex2) 49%,
-                    var(--vortex2) 59%,
-                    var(--vortex1) 59%,
-                    var(--vortex1) 69%,
-                    var(--vortex2) 69%,
-                    var(--vortex2) 79%,
-                    var(--vortex1) 79%,
-                    var(--vortex1) 89%,
-                    var(--vortex2) 89%,
-                    var(--vortex2) 100%);
+                    var(--vortex2) calc(var(--move-rate) - 100%),
+                    var(--vortex2) calc(var(--move-rate) - 90%),
+                    var(--vortex1) calc(var(--move-rate) - 90%),
+                    var(--vortex1) calc(var(--move-rate) - 80%),
+                    var(--vortex2) calc(var(--move-rate) - 80%),
+                    var(--vortex2) calc(var(--move-rate) - 70%),
+                    var(--vortex1) calc(var(--move-rate) - 70%),
+                    var(--vortex1) calc(var(--move-rate) - 60%),
+                    var(--vortex2) calc(var(--move-rate) - 60%),
+                    var(--vortex2) calc(var(--move-rate) - 50%),
+                    var(--vortex1) calc(var(--move-rate) - 50%),
+                    var(--vortex1) calc(var(--move-rate) - 40%),
+                    var(--vortex2) calc(var(--move-rate) - 40%),
+                    var(--vortex2) calc(var(--move-rate) - 30%),
+                    var(--vortex1) calc(var(--move-rate) - 30%),
+                    var(--vortex1) calc(var(--move-rate) - 20%),
+                    var(--vortex2) calc(var(--move-rate) - 20%),
+                    var(--vortex2) calc(var(--move-rate) - 10%),
+                    var(--vortex1) calc(var(--move-rate) - 10%),
+                    var(--vortex1) calc(var(--move-rate)),
+                    var(--vortex2) calc(var(--move-rate)),
+                    var(--vortex2) calc(10% + var(--move-rate)),
+                    var(--vortex1) calc(10% + var(--move-rate)),
+                    var(--vortex1) calc(20% + var(--move-rate)),
+                    var(--vortex2) calc(20% + var(--move-rate)),
+                    var(--vortex2) calc(30% + var(--move-rate)),
+                    var(--vortex1) calc(30% + var(--move-rate)),
+                    var(--vortex1) calc(40% + var(--move-rate)),
+                    var(--vortex2) calc(40% + var(--move-rate)),
+                    var(--vortex2) calc(50% + var(--move-rate)),
+                    var(--vortex1) calc(50% + var(--move-rate)),
+                    var(--vortex1) calc(60% + var(--move-rate)),
+                    var(--vortex2) calc(60% + var(--move-rate)),
+                    var(--vortex2) calc(70% + var(--move-rate)),
+                    var(--vortex1) calc(70% + var(--move-rate)),
+                    var(--vortex1) calc(80% + var(--move-rate)),
+                    var(--vortex2) calc(80% + var(--move-rate)),
+                    var(--vortex2) calc(90% + var(--move-rate)),
+                    var(--vortex1) calc(90% + var(--move-rate)),
+                    var(--vortex1) calc(100% + var(--move-rate))
+                );
                 position: relative;
                 overflow: hidden;
                 background-position: center;
-                animation: vortex 100ms infinite;
+                animation: vortex 2000ms infinite;
             }
             @keyframes tardis-move {
                 from {
